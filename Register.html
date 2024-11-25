@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+
+<body>
+
+
+
+    <form  id="register">
+        <fieldset>
+            <legend>Register:</legend>
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" placeholder="Enter Your Name" required><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" placeholder="Enter your Email" required><br><br>
+            <label for="pass">Password:</label><br>
+            <input type="password" id="pass" placeholder="must be 7–21 characters longand include at least one uppercase letter, one lowercase letter, one number, and one special character (e.g., @, #, $)" required><br><br>
+            <label for="passs">Retype Password:</label><br>
+            <input type="password" id="passs" placeholder="Confirm password" required><br><br>
+            <label for="genders">Gender:</label><br>
+            <input list="gender" id="genders" required>
+            <datalist id="gender">
+                <option value="Male"></option>
+                <option value="Female"></option>
+                <option value="Others"></option>
+            </datalist><br><br>
+            <label for="mbno">Mobile No:</label><br>
+            <input type="text" id="mbno" placeholder="Enter 10-digit Mobile number" required><br><br>
+            <input type="checkbox" id="chck">
+            <label for="chck">I agree to the terms and conditions</label><br><br>
+            <button id="regbtn">Register</button>
+        </fieldset>
+
+    </form><br><br>
+    <div style="display: none;" id="otpblock">
+        <form action="" class="otpVerif">
+            <label for="OTP"><b>OTP:</b></label>
+            <input type="text" id="OTP" required>
+            <button id="verifybtn">Verify</button>
+        </form>
+    </div>
+    <script>
+        const username = document.getElementById("username")
+        const password = document.getElementById("pass")
+        const email = document.getElementById("email")
+        const passs = document.getElementById("passs")
+        const gender = document.getElementById("genders")
+        const MobNo = document.getElementById("mbno")
+        const RegBtn = document.getElementById("regbtn")
+        const inputOTP = document.getElementById("OTP")
+        const verifybtn = document.getElementById("verifybtn")
+        const otpVerif = document.querySelector(".otpVerif")
+        const otpblock = document.getElementById("otpblock")
+        const check = document.getElementById("chck")
+        const passwordPattern = /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&])[A-Za-z\d@$!%?&]{8,20}$/
+        let generateOtp
+
+
+
+        regform.addEventListener("submit", (e) => {
+            e.preventDefault()
+            if (username.value.length < 5 || username.value.length > 18) {
+                alert("Username must be between 5 and 18 characters. Please adjust your input.")
+                return
+            }
+            if (password.value !== passs.value) {
+                alert("Passwords do not match. Please re-enter your password.")
+                return
+            }
+            if (!passwordPattern.test(pass.value)) {
+                alert("Password must be 7–20 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character (e.g., @, #, $).")
+                return
+            }
+            if (MobNo.value.length < 10) {
+                alert("Mobile number must be at least 10 digits long.");
+                return;
+            }
+
+            otpblock.style.display = "block"
+            generateOtp = Math.floor(Math.random() * 1000000)
+            alert(generateOtp)
+        })
+
+        otpVerif.addEventListener("submit", (e) => {
+            e.preventDefault();
+            if (generateOtp == parseInt(inputOTP.value)) {
+                alert("OTP verified successfully!!")
+
+
+                username.value = ""
+                email.value = ''
+                password.value = ''
+                passs.value = ''
+                gender.value = ''
+                MobNo.value = ''
+                inputOTP.value = ''
+                check.checked = false;
+
+
+            }
+            else {
+                alert("Invalid OTP")
+            }
+        })
+
+    </script>
+</body>
+
+</html>

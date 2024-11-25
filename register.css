@@ -1,0 +1,35 @@
+
+fieldset{
+    border-radius: 7px;
+    padding: 40px;
+    background-color:white;
+    box-shadow: 0px 10px 10px rgba(0,0,0,0.5);
+}
+legend{
+    font-size: 30px;
+    font-weight: bold;
+}
+#username,#email,#pass,#passs,#genders,#mbno{
+    width: 300px;
+    height: 30px;
+    margin-top: 5px;
+}
+
+#regbtn{
+    font-size: 15px;
+    padding: 10px 50px;
+    text-align: center;
+    margin-left: 23%;
+    background-color: rgb(12, 3, 137);
+    border-radius: 5px;
+    color: white;
+    border: none;
+}
+#verifybtn{
+    background-color: rgb(214, 212, 222);
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    font-size: 15px;
+    border-radius: 5px;
+}
